@@ -16,5 +16,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "nodemon": "^1.18.4"
+  },
+  "resolutions": {
+    "**/event-stream": "^4.0.1"
   }
 }
