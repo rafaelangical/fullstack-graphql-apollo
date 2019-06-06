@@ -1,38 +1,55 @@
-import { ApolloServer } from 'apollo-server';
-import { makeExecutableSchema } from 'graphql-tools';
+import express from "express";
+import { ApolloServer } from "apollo-server-express";
+import { getToken } from "./src/modules/user/UserLoader";
 
-import * as BookType from './src/modules/book/BookType';
-import * as AuthorType from './src/modules/author/AuthorType';
+import * as ProductType from "./src/modules/product/ProductType";
+import * as UserType from "./src/modules/user/UserType";
+
+import "./src/utils/db";
 
 const SchemaDefinition = `
   schema {
     query: Query
+    mutation: Mutation
   }
   type Query {
-    books: [Book]
-    authors: [Author]
+    products: [Product]
+    getProducts: [Product]
+    getUsers: [User]
+  }
+  type Mutation {
+    login( name: String, password: String ): Token!
+    addProduct( name: String, price: Int, barcode: String, description: String ): Product
+    createUser( name: String, password: String, age: Int, cpf: String ): Token!
+    dev_addProduct( name: String, price: Int, barcode: String, description: String ): Product
   }
 `;
 
 const typeDefs = [
-  BookType.typeDefs,
-  AuthorType.typeDefs,
+  ProductType.typeDefs,
+  UserType.typeDefs,
 ];
 
 const resolvers = {
   Query: {
-    ...BookType.resolvers,
-    ...AuthorType.resolvers
+    ...ProductType.resolvers,
+    ...UserType.resolvers
   },
+  Mutation: {
+    ...ProductType.mutations,
+    ...UserType.mutations
+  }
 };
 
-const schema = makeExecutableSchema({
+const server = new ApolloServer({
   typeDefs: [SchemaDefinition, ...typeDefs],
-  resolvers
+  resolvers,
+  context: getToken
 });
 
-const server = new ApolloServer({ schema });
+const app = express();
+server.applyMiddleware({ app });
 
-server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+app.listen({ port: 5000 }, (url) =>
+  console.log(`🚀 Server ready at http://localhost:4000/graphql`)
+);
