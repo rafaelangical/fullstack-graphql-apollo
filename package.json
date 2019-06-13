@@ -13,12 +13,15 @@
   },
   "scripts": {
 
-    "start": "yarn start:server & yarn start:web",
+    "start": "yarn start:server & yarn start:app",
 
-    "start:web": "yarn workspace @frontend/frontend run start",
-    "build:web" : "yarn workspace @frontend/frontend run build",
-    "test:web" : "yarn workspace @frontend/frontend run test",
+    "start:app": "yarn workspace @frontend/frontend run start",
+    "build:app" : "yarn workspace @frontend/frontend run build",
+    "test:app" : "yarn workspace @frontend/frontend run test",
     "eject:web" : "yarn workspace @frontend/frontend run eject",
+
+    "run-android": "yarn workspace @frontend/frontend react-native run-android",
+    "run-ios": "yarn workspace @frontend/frontend react-native run-ios",
 
     "start:server": "yarn workspace @graphql/server run start",
 
