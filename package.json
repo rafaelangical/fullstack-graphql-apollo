@@ -1,0 +1,30 @@
+{
+  "name": "fullstack-graphql-apollo",
+  "private": true,
+  "version":"0.0.1",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native-*"
+    ]
+  },
+  "scripts": {
+
+    "start": "yarn start:server & yarn start:web",
+
+    "start:web": "yarn workspace @frontend/frontend run start",
+    "build:web" : "yarn workspace @frontend/frontend run build",
+    "test:web" : "yarn workspace @frontend/frontend run test",
+    "eject:web" : "yarn workspace @frontend/frontend run eject",
+
+    "start:server": "yarn workspace @graphql/server run start",
+
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+
+  }
+} 
