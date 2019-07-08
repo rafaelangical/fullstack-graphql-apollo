@@ -6,6 +6,7 @@ const {
   loadAllUsers,
   newToken,
   comparePassword,
+  getUserDetails,
 } = UserLoader;
 
 export const typeDefs = `
@@ -28,6 +29,9 @@ export const resolvers = {
 
 export const mutations = {
   createUser: (root, args) => createUser(args),
+  getUserDetails: (root, args) => {
+    return getUserDetails(args.id);
+  },
   login: (root, { name: inputName, password }) => {
     const name = inputName;
     return UserModel.find({ name }).then(result => {

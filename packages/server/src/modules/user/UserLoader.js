@@ -62,3 +62,15 @@ export const createUser = ({ name: inputName, password, age, cpf }) => {
     return { token };
   });
 };
+
+export const getUserDetails = async id => {
+  let user = [];
+  try {
+    user = await UserModel.findById(id);
+    console.log("user", user);
+  } catch (error) {
+    console.log("error", error);
+  }
+
+  return user;
+ };

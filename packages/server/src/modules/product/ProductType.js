@@ -30,8 +30,7 @@ export const mutations = {
     throw new AuthenticationError("Please signing again.");
   },
   getProductDetails: (root, args) => {
-    console.log(args); 
-    getProductDetails(args.id);
+    return getProductDetails(args.id);
   },
   dev_addProduct: (root, args) => addProduct(args)
 };

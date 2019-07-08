@@ -7,6 +7,8 @@ import * as UserType from "./src/modules/user/UserType";
 
 import "./src/utils/db";
 
+const port = 5000;
+
 const SchemaDefinition = `
   schema {
     query: Query
@@ -19,10 +21,11 @@ const SchemaDefinition = `
   }
   type Mutation {
     login( name: String, password: String ): Token!
-    addProduct( name: String, price: Int, barcode: String, description: String ): Product
+    addProduct( name: String, price: Int, barcode: String, description: String ): Product!
     createUser( name: String, password: String, age: Int, cpf: String ): Token!
-    dev_addProduct( name: String, price: Int, barcode: String, description: String ): Product
-    getProductDetails(id: String ): Product
+    dev_addProduct( name: String, price: Int, barcode: String, description: String ): Product!
+    getProductDetails(id: String ): Product!
+    getUserDetails(id: String): User
   }
 `;
 
@@ -51,6 +54,6 @@ const server = new ApolloServer({
 const app = express();
 server.applyMiddleware({ app });
 
-app.listen({ port: 5000 }, (url) =>
-  console.log(`🚀 Server ready at http://localhost:5000/graphql`)
+app.listen({ port }, (url) =>
+  console.log(`🚀 Server ready at http://localhost:${port}/graphql`)
 );
