@@ -98,6 +98,7 @@
 
 import React from 'react';
 import {graphql, QueryRenderer} from 'react-relay';
+import { Text } from 'react-native';
 
 import environment from './Environment'; /* defined or imported above... */;
 
@@ -115,12 +116,12 @@ export default class App extends React.Component {
         variables={{}}
         render={({error, props}) => {
           if (error) {
-            return <div>Error!</div>;
+            return <View><Text>Error!</Text></View>
           }
           if (!props) {
-            return <div>Loading...</div>;
+            return <View><Text>Loading...</Text></View>
           }
-          return <div>User ID: {props.viewer.id}</div>;
+          return <View><Text>Response ok</Text></View>
         }}
       />
     );
