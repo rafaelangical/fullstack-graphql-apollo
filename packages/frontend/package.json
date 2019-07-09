@@ -1,22 +1,31 @@
 {
-  "name": "@frontend/frontend",
+  "name": "frontend",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint .",
+    "relay": "relay-compiler --src ./src --schema ./src/data/schema.graphql"
   },
   "dependencies": {
-    "react": "16.8.3",
-    "react-native": "0.59.9"
+    "react": "16.8.6",
+    "react-native": "0.60.0",
+    "react-relay": "^5.0.0",
+    "regenerator": "^0.14.1"
   },
   "devDependencies": {
-    "@babel/core": "7.4.5",
-    "@babel/runtime": "7.4.5",
+    "@babel/core": "7.5.0",
+    "@babel/runtime": "7.5.2",
+    "@react-native-community/eslint-config": "0.0.3",
     "babel-jest": "24.8.0",
+    "babel-plugin-relay": "^5.0.0",
+    "eslint": "6.0.1",
+    "graphql": "^14.4.2",
     "jest": "24.8.0",
     "metro-react-native-babel-preset": "0.54.1",
-    "react-test-renderer": "16.8.3"
+    "react-test-renderer": "16.8.6",
+    "relay-compiler": "^5.0.0"
   },
   "jest": {
     "preset": "react-native"
