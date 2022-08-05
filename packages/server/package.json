@@ -15,7 +15,7 @@
     "graphql": "^14.0.2",
     "graphql-tools": "^4.0.3",
     "jsonwebtoken": "^8.4.0",
-    "mongoose": "^5.3.12"
+    "mongoose": "^5.7.5"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
