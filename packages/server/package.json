@@ -6,7 +6,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "apollo-server": "^2.2.2",
+    "apollo-server": "^2.25.4",
     "apollo-server-express": "^2.2.2",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
